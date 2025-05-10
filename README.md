@@ -12,3 +12,48 @@ npm i -D lint-staged prettier
 
 https://nextjs.org/docs/app/api-reference/config/eslint#running-lint-on-staged-files
 Add .lintstagedrc.mjs
+
+next/typescript based on plugin:@typescript-eslint/recommended (@typescript-eslint/eslint-plugin)
+
+So, plugin:@typescript-eslint/recommended-requiring-type-checking would need parser: '@typescript-eslint/parser' set in config. Otherwise next/typescipt handles basic linting
+
+Customizing languageOptions in config also requires own parser (@typescript-eslint/parser)
+
+next/core-web-vitals updates eslint-plugin-next
+
+In ESLint, extends is shorthand for importing and merging predefined configurations — which may include: rules, parser, parserOptions, plugins, etc
+So, the order matters. The top configs will be overriden by lower ones if they conflict.
+
+recommended-requiring-type-checking rules overwrite next/core-web-vitals
+
+```
+export default [
+  ...compat.config({
+    extends: ['next/core-web-vitals'],
+  }),
+  {
+    rules: {
+      ...tsPlugin.configs['recommended-requiring-type-checking'].rules,
+    },
+  },
+];
+```
+
+next/core-web-vitals rules overwrite recommended-requiring-type-checking
+
+```
+export default [
+  {
+    rules: {
+      ...tsPlugin.configs['recommended-requiring-type-checking'].rules,
+    },
+  },
+  ...compat.config({
+    extends: ['next/core-web-vitals'],
+  }),
+];
+```
+
+3. Add .prettierrc (custom config) and npm i -D eslint-config-prettier
+
+Add 'prettier' to end of extends (eslint-config-prettier only turns OFF eslint rules that would conflict with prettier)
