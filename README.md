@@ -57,3 +57,6 @@ export default [
 3. Add .prettierrc (custom config) and npm i -D eslint-config-prettier
 
 Add 'prettier' to end of extends (eslint-config-prettier only turns OFF eslint rules that would conflict with prettier)
+
+4. Add https://typescript-eslint.io/users/configs/#recommended-type-checked to rules.
+   Now eslint needs a reference to how to configure TS, so add languageOptions.parserOptions.project: ['./tsconfig.json']
