@@ -5,7 +5,9 @@ const buildEslintCommand = (filenames) => {
     .map((f) => path.relative(process.cwd(), f))
     .join(" --file ");
   return [
-    `next lint --fix --file ${files}`,
+    "tsc --noEmit",
+    // --config shouldn't be necessary, but doesn't hurt
+    `next lint --config ./eslint.config.mjs --fix --file ${files}`,
     `prettier --write ${filenames.join(" ")}`,
   ];
 };

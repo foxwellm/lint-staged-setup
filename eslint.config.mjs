@@ -1,8 +1,6 @@
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { FlatCompat } from '@eslint/eslintrc'
-// import tsEslintParser from '@typescript-eslint/parser'
-// import tsEslintPlugin from '@typescript-eslint/eslint-plugin'
 import tseslint from 'typescript-eslint'
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 

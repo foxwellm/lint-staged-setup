@@ -13,6 +13,8 @@ npm i -D lint-staged prettier
 https://nextjs.org/docs/app/api-reference/config/eslint#running-lint-on-staged-files
 Add .lintstagedrc.mjs
 
+Add tsc --noEmit" to .lintstagedrc.mjs, it runs TypeScript checks on the files without emmiting its JavaScript file.
+
 next/typescript based on plugin:@typescript-eslint/recommended (@typescript-eslint/eslint-plugin)
 
 So, plugin:@typescript-eslint/recommended-requiring-type-checking would need parser: '@typescript-eslint/parser' set in config. Otherwise next/typescipt handles basic linting
@@ -60,3 +62,9 @@ Add 'prettier' to end of extends (eslint-config-prettier only turns OFF eslint r
 
 4. Add https://typescript-eslint.io/users/configs/#recommended-type-checked to rules.
    Now eslint needs a reference to how to configure TS, so add languageOptions.parserOptions.project: ['./tsconfig.json']
+
+5. Add eslint-plugin-simple-import-sort
+
+ADDITIONAL NOTES:
+
+Weird errors and bugs like "parser" key not correctly nested (when it is) and npx lint-staged not using updated eslint.config.mjs file was fixed by rebuilding eslint.config.mjs from beginning
