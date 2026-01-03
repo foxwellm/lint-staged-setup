@@ -1,5 +1,7 @@
 1. Install Husky
 
+`npx husky init`
+
 https://typicode.github.io/husky/get-started.html
 
 .husky/pre-commit -> npm run lint -- --fix
