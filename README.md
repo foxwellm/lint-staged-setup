@@ -8,14 +8,23 @@ https://typicode.github.io/husky/get-started.html
 
 2. Add lint-staged and prettier
 
-npm i -D lint-staged prettier
+`npm i -D lint-staged prettier`
 
 .husky/pre-commit -> npx lint-staged
 
 https://nextjs.org/docs/app/api-reference/config/eslint#running-lint-on-staged-files
-Add .lintstagedrc.mjs
+
+Add .lintstagedrc.mjs file from this repo (The example in the docs is a .js file)
 
 Add tsc --noEmit" to .lintstagedrc.mjs, it runs TypeScript checks on the files without emmiting its JavaScript file.
+
+# eslint.config.mjs NOTES:
+
+### 2026:
+
+eslint now uses the `defineConfig` setup with flat imports for core-web-vitals and typescript
+
+### Old pre 2026:
 
 next/typescript based on plugin:@typescript-eslint/recommended (@typescript-eslint/eslint-plugin)
 
